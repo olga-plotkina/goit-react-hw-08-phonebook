@@ -1,3 +1,4 @@
+import { createReducer } from '@reduxjs/toolkit';
 import { addContact, deleteContact, setFilterString } from './actions';
 
 const contactsInitialState = [
@@ -7,31 +8,22 @@ const contactsInitialState = [
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-export const contactsReducer = (state = contactsInitialState, action) => {
-  let newContactsState;
-  switch (action.type) {
-    case addContact.type:
-      newContactsState = state.find(
-        contact => contact.name === action.payload.name
-      )
-        ? alert(`${action.payload.name} is already in contacts`)
-        : [...state, action.payload];
-      return newContactsState;
-    case deleteContact.type:
-      return state.filter(contact => contact.id !== action.payload);
-
-    default:
-      return state;
-  }
-};
+export const contactsReducer = createReducer(contactsInitialState, {
+  [addContact]: (state, action) => {
+    let newContactsState;
+    newContactsState = state.find(
+      contact => contact.name === action.payload.name
+    )
+      ? alert(`${action.payload.name} is already in contacts`)
+      : [...state, action.payload];
+    return newContactsState;
+  },
+  [deleteContact]: (state, action) =>
+    state.filter(contact => contact.id !== action.payload),
+});
 
 const filtersInitialState = '';
 
-export const filtersReducer = (state = filtersInitialState, action) => {
-  switch (action.type) {
-    case setFilterString.type:
-      return action.payload;
-    default:
-      return state;
-  }
-};
+export const filtersReducer = createReducer(filtersInitialState, {
+  [setFilterString]: (state, action) => action.payload,
+});
