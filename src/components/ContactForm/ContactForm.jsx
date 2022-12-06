@@ -1,8 +1,11 @@
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/actions';
 
 import { FormBox } from './ContactForm.styled';
 import { useState } from 'react';
-export function ContactForm({ submitProp }) {
+
+export function ContactForm() {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -22,7 +25,7 @@ export function ContactForm({ submitProp }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    submitProp({ type: 'add', payload: { name, number } });
+    dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
   };
@@ -57,7 +60,3 @@ export function ContactForm({ submitProp }) {
     </FormBox>
   );
 }
-
-ContactForm.propTypes = {
-  submitProp: PropTypes.func.isRequired,
-};
