@@ -59,7 +59,5 @@ export function ContactForm({ submitProp }) {
 }
 
 ContactForm.propTypes = {
-  onSubmit: PropTypes.func,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
+  submitProp: PropTypes.func.isRequired,
 };
