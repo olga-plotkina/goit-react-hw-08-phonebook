@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { addContact, deleteContact, setFilterString } from './actions';
 
 const contactsInitialState = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -7,17 +7,17 @@ const contactsInitialState = [
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-const contactsReducer = (state = contactsInitialState, action) => {
+export const contactsReducer = (state = contactsInitialState, action) => {
   let newContactsState;
   switch (action.type) {
-    case 'contacts/addContact':
+    case addContact.type:
       newContactsState = state.find(
         contact => contact.name === action.payload.name
       )
         ? alert(`${action.payload.name} is already in contacts`)
         : [...state, action.payload];
       return newContactsState;
-    case 'contacts/deleteContact':
+    case deleteContact.type:
       return state.filter(contact => contact.id !== action.payload);
 
     default:
@@ -27,16 +27,11 @@ const contactsReducer = (state = contactsInitialState, action) => {
 
 const filtersInitialState = '';
 
-const filtersReducer = (state = filtersInitialState, action) => {
+export const filtersReducer = (state = filtersInitialState, action) => {
   switch (action.type) {
-    case 'filter/setFilterString':
+    case setFilterString.type:
       return action.payload;
     default:
       return state;
   }
 };
-
-export const rootReducer = combineReducers({
-  contacts: contactsReducer,
-  filter: filtersReducer,
-});
