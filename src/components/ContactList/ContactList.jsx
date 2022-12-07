@@ -1,6 +1,6 @@
 import { getContacts, getFilterString } from 'redux/selectors';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/actions';
+import { deleteContact } from '../../redux/contactsSlice';
 import { StyledContacts, ContactsItem } from './ContactList.styled';
 
 const getVisibleContacts = (contacts, filterString) => {
