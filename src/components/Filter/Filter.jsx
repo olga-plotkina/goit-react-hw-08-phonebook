@@ -13,7 +13,9 @@ export const Filter = () => {
         <input
           type="text"
           value={filter}
-          onChange={event => dispatch(setFilterString(event.target.value))}
+          onChange={event =>
+            dispatch(setFilterString(event.target.value.trim()))
+          }
         ></input>
       </label>
     </StyledFilter>
