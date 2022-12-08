@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
 import { FormBox } from './ContactForm.styled';
 import { useState } from 'react';
@@ -25,7 +25,7 @@ export function ContactForm() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(addContact({ name, number }));
+    dispatch(addContact({ name, phone: number }));
     setName('');
     setNumber('');
   };
