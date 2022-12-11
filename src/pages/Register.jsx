@@ -4,7 +4,7 @@ import { register } from 'redux/auth/operations';
 import { FormBox } from '../components/ContactForm/ContactForm.styled';
 import { useState } from 'react';
 
-function RegisterPage() {
+const RegisterPage = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -74,6 +74,6 @@ function RegisterPage() {
       <button type="submit">Register</button>
     </FormBox>
   );
-}
+};
 
 export default RegisterPage;

@@ -4,7 +4,7 @@ import { logIn } from '../redux/auth/operations';
 import { FormBox } from '../components/ContactForm/ContactForm.styled';
 import { useState } from 'react';
 
-function LoginPage() {
+const LoginPage = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -57,6 +57,6 @@ function LoginPage() {
       <button type="submit">Log in</button>
     </FormBox>
   );
-}
+};
 
 export default LoginPage;

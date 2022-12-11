@@ -1,9 +1,6 @@
 import React from 'react';
-// import { lazy } from 'react';
-import HomePage from 'pages/Home';
-import RegisterPage from 'pages/Register';
-import LoginPage from 'pages/Login';
-import ContactsPage from 'pages/Contacts';
+import { lazy } from 'react';
+
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout';
 import { useDispatch } from 'react-redux';
@@ -13,10 +10,10 @@ import { useAuth } from 'hooks/useAuth';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 
-// const HomePage = lazy(() => import('../pages/Home'));
-// const RegisterPage = lazy(() => import('../pages/Register'));
-// const LoginPage = lazy(() => import('../pages/Login'));
-// const ContactsPage = lazy(() => import('../pages/Contacts'));
+const HomePage = lazy(() => import('../pages/Home'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export function App() {
   const dispatch = useDispatch();
