@@ -1,5 +1,12 @@
+import { WelcomeTitle, Link } from './Home.styled';
+
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <>
+      <WelcomeTitle>Welcome to PhoneBook!</WelcomeTitle>
+      <Link to="/login">Get Started</Link>
+    </>
+  );
 };
 
 export default HomePage;

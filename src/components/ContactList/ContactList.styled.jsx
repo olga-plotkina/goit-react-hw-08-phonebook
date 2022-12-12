@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const StyledContacts = styled.ul`
   font-size: 24px;
   margin-top: 25px;
+
+  margin-left: 38.5%;
 `;
 
 export const ContactsItem = styled.li`

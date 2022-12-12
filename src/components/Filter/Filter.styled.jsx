@@ -5,6 +5,7 @@ export const StyledFilter = styled.div`
 
   label {
     margin-bottom: 2px;
+    text-align: center;
   }
 
   input {

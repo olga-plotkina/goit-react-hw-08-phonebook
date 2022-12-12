@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { fetchContacts, deleteContact } from 'redux/contacts/operations';
+import { deleteContact } from 'redux/contacts/operations';
 import {
   selectVisibleContacts,
   selectError,
@@ -14,17 +13,13 @@ export const ContactList = () => {
   const error = useSelector(selectError);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
     <StyledContacts>
       {isLoading && !error && <b>Request in progress...</b>}
       {error && <p>{error}</p>}
       {contacts.map(contact => (
         <ContactsItem key={contact.id}>
-          {contact.name}: {contact.phone}
+          {contact.name}: {contact.number}
           <button onClick={() => dispatch(deleteContact(contact.id))}>
             Delete
           </button>
