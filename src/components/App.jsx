@@ -19,7 +19,9 @@ export function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
-  useEffect(() => dispatch(refreshUser), [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   return isRefreshing ? (
     'Fetching user data...'
   ) : (
