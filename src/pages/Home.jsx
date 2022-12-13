@@ -7,7 +7,7 @@ const HomePage = () => {
       <Typography
         component="h1"
         variant="h2"
-        color="primary"
+        color="primary.light"
         textAlign="center"
       >
         Welcome to PhoneBook!
