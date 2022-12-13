@@ -1,5 +1,5 @@
-import { Form } from '../components/App.styled';
-import { Filter } from '../components/Filter';
+// import { Form } from '../components/App.styled';
+import { Box, Typography } from '@mui/material';
 import { ContactForm } from '../components/ContactForm';
 import { ContactList } from '../components/ContactList/';
 import { fetchContacts } from 'redux/contacts/operations';
@@ -14,13 +14,12 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <Form>
-      <h1>Phonebook </h1>
+    <Box>
+      <Typography component="h1">Phonebook </Typography>
       <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
+      <Typography component="h2">Contacts</Typography>
       <ContactList />
-    </Form>
+    </Box>
   );
 };
 

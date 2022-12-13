@@ -5,7 +5,12 @@ import {
   selectIsLoading,
 } from 'redux/contacts/selectors';
 import { useSelector, useDispatch } from 'react-redux';
-import { StyledContacts, ContactsItem } from './ContactList.styled';
+import { Box } from '@mui/material';
+import { Filter } from 'components/Filter';
+import List from '@mui/joy/List';
+import ListItem from '@mui/joy/ListItem';
+import IconButton from '@mui/joy/IconButton';
+import Delete from '@mui/icons-material/Delete';
 
 export const ContactList = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -14,17 +19,47 @@ export const ContactList = () => {
   const dispatch = useDispatch();
 
   return (
-    <StyledContacts>
-      {isLoading && !error && <b>Request in progress...</b>}
-      {error && <p>{error}</p>}
-      {contacts.map(contact => (
-        <ContactsItem key={contact.id}>
-          {contact.name}: {contact.number}
-          <button onClick={() => dispatch(deleteContact(contact.id))}>
-            Delete
-          </button>
-        </ContactsItem>
-      ))}
-    </StyledContacts>
+    <Box>
+      <Filter />
+      <List
+        variant="standard"
+        sx={{
+          bgcolor: 'background.body',
+          marginX: 'auto',
+          width: '100%',
+          marginTop: '40px',
+          maxWidth: 400,
+          borderRadius: 'sm',
+          boxShadow: 'sm',
+          '--List-decorator-size': '48px',
+          '--List-item-paddingLeft': '1.5rem',
+          '--List-item-paddingRight': '1rem',
+        }}
+      >
+        {isLoading && !error && <b>Request in progress...</b>}
+        {error && <p>{error}</p>}
+        {contacts.map(contact => (
+          <ListItem
+            key={contact.id}
+            sx={{
+              borderBottom: '1px solid grey',
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            {contact.name}: {contact.number}
+            <IconButton
+              aria-label="Delete"
+              size="sm"
+              color="primary"
+              onClick={() => dispatch(deleteContact(contact.id))}
+            >
+              <Delete color="warning" />
+            </IconButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
 };

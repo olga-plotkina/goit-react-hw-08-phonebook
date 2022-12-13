@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
-
-import { FormBox } from './ContactForm.styled';
+import { Card, Button, TextField } from '@mui/material';
+// import { FormBox } from './ContactForm.styled';
 import { useState } from 'react';
 
 export function ContactForm() {
@@ -31,32 +31,53 @@ export function ContactForm() {
   };
 
   return (
-    <FormBox onSubmit={handleSubmit}>
-      <label>
-        Name
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleChange}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-      </label>
-      <label>
-        Number
-        <input
-          type="tel"
-          name="number"
-          value={number}
-          onChange={handleChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-        />
-      </label>
-      <button type="submit">Add contact</button>
-    </FormBox>
+    <Card
+      component="form"
+      sx={{
+        py: '35px',
+        px: '30px',
+        mx: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 2,
+        maxWidth: '350px',
+        autoComplete: 'off',
+      }}
+      onSubmit={handleSubmit}
+    >
+      <TextField
+        label="Name"
+        type="text"
+        name="name"
+        value={name}
+        onChange={handleChange}
+        variant="standard"
+        color="primary"
+        size="small"
+        inputProps={{
+          pattern: "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+        }}
+        autoComplete="off"
+        helperText="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+      />
+      <TextField
+        label="Number"
+        type="tel"
+        name="number"
+        value={number}
+        variant="standard"
+        color="primary"
+        size="small"
+        onChange={handleChange}
+        inputProps={{
+          pattern:
+            '+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}',
+        }}
+        helperText="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+      />
+      <Button type="submit" variant="contained">
+        Add contact
+      </Button>
+    </Card>
   );
 }
