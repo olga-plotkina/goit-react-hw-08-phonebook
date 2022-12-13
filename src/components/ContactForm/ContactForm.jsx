@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { Card, Button, TextField } from '@mui/material';
-// import { FormBox } from './ContactForm.styled';
 import { useState } from 'react';
 
 export function ContactForm() {
@@ -37,6 +36,7 @@ export function ContactForm() {
         py: '35px',
         px: '30px',
         mx: 'auto',
+        mb: '30px',
         display: 'flex',
         flexDirection: 'column',
         gap: 2,

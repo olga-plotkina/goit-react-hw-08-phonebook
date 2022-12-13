@@ -15,9 +15,25 @@ const ContactsPage = () => {
 
   return (
     <Box>
-      <Typography component="h1">Phonebook </Typography>
+      <Typography
+        component="h1"
+        color="primary.light"
+        variant="h2"
+        textAlign="center"
+        mb="20px"
+      >
+        Phonebook
+      </Typography>
       <ContactForm />
-      <Typography component="h2">Contacts</Typography>
+      <Typography
+        component="h2"
+        variant="h4"
+        color="grey.500"
+        textAlign="center"
+        mb="10px"
+      >
+        Contacts
+      </Typography>
       <ContactList />
     </Box>
   );

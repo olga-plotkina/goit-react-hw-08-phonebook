@@ -19,7 +19,7 @@ export const ContactList = () => {
   const dispatch = useDispatch();
 
   return (
-    <Box>
+    <Box marginX="auto" width="400px">
       <Filter />
       <List
         variant="standard"
