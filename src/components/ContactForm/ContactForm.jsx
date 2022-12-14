@@ -7,6 +7,8 @@ export function ContactForm() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const [nameError, setNameError] = useState(null);
+  const [numberError, setNumberError] = useState(null);
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -24,6 +26,20 @@ export function ContactForm() {
 
   const handleSubmit = event => {
     event.preventDefault();
+    if (
+      !event.target.elements.name.value.match(
+        event.target.elements.name.pattern
+      )
+    ) {
+      setNameError(true);
+    }
+    if (
+      !event.target.elements.number.value.match(
+        event.target.elements.number.pattern
+      )
+    ) {
+      setNumberError(true);
+    }
     dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
@@ -46,6 +62,8 @@ export function ContactForm() {
       onSubmit={handleSubmit}
     >
       <TextField
+        required
+        error={nameError}
         label="Name"
         type="text"
         name="name"
@@ -61,6 +79,8 @@ export function ContactForm() {
         helperText="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
       />
       <TextField
+        required
+        error={numberError}
         label="Number"
         type="tel"
         name="number"

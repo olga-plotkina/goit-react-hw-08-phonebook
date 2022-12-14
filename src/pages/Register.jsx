@@ -8,6 +8,9 @@ const RegisterPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [nameError, setNameError] = useState(null);
+  const [emailError, setEmailError] = useState(null);
+  const [passwordError, setPasswordError] = useState(null);
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -28,6 +31,27 @@ const RegisterPage = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    if (
+      !event.target.elements.email.value.match(
+        event.target.elements.email.pattern
+      )
+    ) {
+      setEmailError(true);
+    }
+    if (
+      !event.target.elements.password.value.match(
+        event.target.elements.password.pattern
+      )
+    ) {
+      setPasswordError(true);
+    }
+    if (
+      !event.target.elements.name.value.match(
+        event.target.elements.name.pattern
+      )
+    ) {
+      setNameError(true);
+    }
     dispatch(register({ name, email, password }));
     setName('');
     setEmail('');
@@ -57,6 +81,10 @@ const RegisterPage = () => {
         size="small"
         type="text"
         name="name"
+        inputProps={{
+          pattern: "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+        }}
+        error={nameError}
         value={name}
         onChange={handleChange}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -71,6 +99,10 @@ const RegisterPage = () => {
         size="small"
         type="email"
         name="email"
+        error={emailError}
+        inputProps={{
+          pattern: '^([0-9a-zA-Zd_.-])+@(([a-zA-Zd-])+.)+([a-zA-Zd]{2,4})+$',
+        }}
         value={email}
         onChange={handleChange}
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
@@ -84,6 +116,10 @@ const RegisterPage = () => {
         name="password"
         value={password}
         onChange={handleChange}
+        error={passwordError}
+        inputProps={{
+          pattern: '^.{4,8}$',
+        }}
         color="primary"
         size="small"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
