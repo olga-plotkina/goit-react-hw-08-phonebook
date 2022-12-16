@@ -43,6 +43,8 @@ export function ContactForm() {
     dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
+    setNameError(false);
+    setNumberError(false);
   };
 
   return (

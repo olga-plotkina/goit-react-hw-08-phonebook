@@ -56,6 +56,9 @@ const RegisterPage = () => {
     setName('');
     setEmail('');
     setPassword('');
+    setPasswordError(false);
+    setNameError(false);
+    setEmailError(false);
   };
 
   return (

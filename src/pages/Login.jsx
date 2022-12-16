@@ -43,6 +43,8 @@ const LoginPage = () => {
     dispatch(logIn({ email, password }));
     setEmail('');
     setPassword('');
+    setEmailError(false);
+    setPasswordError(false);
   };
 
   return (
