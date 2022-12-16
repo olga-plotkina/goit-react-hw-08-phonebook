@@ -73,6 +73,7 @@ const LoginPage = () => {
         color="primary"
         size="small"
         error={emailError}
+        helperText="Email must contain only latin letters, numbers, @ and dots"
         inputProps={{
           pattern: '^([0-9a-zA-Zd_.-])+@(([a-zA-Zd-])+.)+([a-zA-Zd]{2,4})+$',
         }}
@@ -89,11 +90,11 @@ const LoginPage = () => {
         name="password"
         error={passwordError}
         inputProps={{
-          pattern: '^.{4,8}$',
+          pattern: '^.{4,10}$',
         }}
         value={password}
         onChange={handleChange}
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        helperText="Password must contain from 4 to 10 characters"
         required
       />
 

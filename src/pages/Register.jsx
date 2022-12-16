@@ -91,7 +91,7 @@ const RegisterPage = () => {
         value={name}
         onChange={handleChange}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        helperText="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
       />
 
@@ -108,7 +108,7 @@ const RegisterPage = () => {
         }}
         value={email}
         onChange={handleChange}
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        helperText="Email must contain only latin letters, numbers, @ and dots"
         required
       />
 
@@ -121,11 +121,11 @@ const RegisterPage = () => {
         onChange={handleChange}
         error={passwordError}
         inputProps={{
-          pattern: '^.{4,8}$',
+          pattern: '^.{4,10}$',
         }}
         color="primary"
         size="small"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        helperText="Password must contain from 4 to 10 characters"
         required
       />
 
