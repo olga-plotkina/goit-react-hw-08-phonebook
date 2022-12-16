@@ -92,8 +92,7 @@ export function ContactForm() {
         size="small"
         onChange={handleChange}
         inputProps={{
-          pattern:
-            '+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}',
+          pattern: '^([+]?[s0-9]+)?(d{3}|[(]?[0-9]+[)])?([-]?[s]?[0-9])+$',
         }}
         helperText="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
       />
